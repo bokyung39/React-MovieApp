@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
 import Movie from "../components/Movie";
 import styles from "../Home.module.css";
+import { RotateLoader } from "react-spinners";
 
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMoives] = useState([]);
+  const override = {
+    position: "absolute",
+    top: "50%",
+    right: "50%",
+    borderColor: "#E50915",
+    textAlign: "center",
+  };
   const getMovies = async () => {
     const json = await (
       await fetch(
@@ -21,7 +29,7 @@ function Home() {
   return (
     <div>
       {loading ? (
-        <h1>Loading...</h1>
+        <RotateLoader color="#d8d8d8" cssOverride={override} />
       ) : (
         <section>
           <div className={styles.container}>
@@ -33,6 +41,9 @@ function Home() {
                     coverImg={movie.medium_cover_image}
                     title={movie.title}
                     genres={movie.genres}
+                    year={movie.year}
+                    rating={movie.rating}
+                    backgroundImg={movie.background_image}
                   />
                 </div>
               ))}

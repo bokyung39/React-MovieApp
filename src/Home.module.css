@@ -1,9 +1,9 @@
+html,
 body {
   padding: 0;
   margin: 0;
-
-  background-color: rgb(26, 26, 26);
   color: white;
+  background-color: rgb(26, 26, 26);
 }
 /* Home.module.css */
 .header {
@@ -11,11 +11,11 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 20px;
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
+  border-top: 1px solid #313131;
+  border-bottom: 1px solid #313131;
   background-color: #000;
   h1 {
-    width: 1240px;
+    width: 1250px;
     margin: 25px auto;
   }
 }
@@ -25,7 +25,7 @@ body {
 .container {
   position: relative;
   padding: 100px 0;
-  width: 1240px;
+  width: 1250px;
   min-height: 383px;
   margin: 0 auto;
   overflow: hidden;
@@ -34,21 +34,34 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+img {
+  width: 240px;
+  height: 360px;
+}
 .movie {
-  max-width: 240px;
+  width: 240px;
+  height: 360px;
   margin-right: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   background-color: #2d2d2d;
   border-radius: 10px;
   overflow: hidden;
-
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.overlay {
+  display: block;
+}
 .movie:hover {
   img {
+    filter: brightness(0.5);
     transform: scale(1.05);
   }
+}
+.movie:hover .overlay {
+  display: block;
+  display: flex;
+  color: white;
 }
 
 .movie img {
@@ -57,10 +70,6 @@ body {
 
   object-fit: cover;
   transition: transform 0.3s ease-in-out;
-}
-
-.movie-info {
-  padding: 10px;
 }
 
 .movie h2 {

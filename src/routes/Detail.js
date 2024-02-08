@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { RotateLoader } from "react-spinners";
 function Detail() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [currMovie, setCurrMovie] = useState(null);
-
+  const override = {
+    position: "absolute",
+    top: "50%",
+    right: "50%",
+    borderColor: "#E50915",
+    textAlign: "center",
+  };
   const getMovie = async () => {
     const json = await (
       await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
@@ -22,9 +29,15 @@ function Detail() {
   return (
     <div>
       {loading ? (
-        <h1>Loading...</h1>
+        <RotateLoader color="#d8d8d8" cssOverride={override} />
       ) : (
-        <div>
+        <div
+          style={{
+            backgroundImage: `url(${currMovie.background_image})`,
+            backgroundSize: "cover",
+            minHeight: "100vh",
+          }}
+        >
           <img src={currMovie.medium_cover_image} alt={currMovie.title}></img>
           <h3> Title : {currMovie.title}</h3>
           <h3>

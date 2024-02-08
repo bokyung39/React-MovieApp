@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
+import styles from "../Home.module.css";
 // function Movie({ id, coverImg, title, summary, genres }) {
 //   return (
 //     <div>
@@ -18,11 +18,20 @@ import { Link } from "react-router-dom";
 //   );
 // }
 
-function Movie({ id, coverImg, title, summary, genres }) {
+function Movie({ id, coverImg, title, summary, genres, year, rating }) {
   return (
-    <>
-      <img src={coverImg} alt={title} />
-    </>
+    <div>
+      <Link to={`/movie/${id}`}>
+        <img src={coverImg} alt={title} />
+      </Link>
+      <div className={styles.overlay}>
+        <h2 className={styles.title}>{title}</h2>
+        <p className={styles.year}>{year}</p>
+        <p className={styles.rating}>
+          <span>&#9733;</span> {rating}
+        </p>
+      </div>
+    </div>
   );
 }
 
