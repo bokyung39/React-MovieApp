@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "SOGANGUNIVERSITYTTF";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SOGANGUNIVERSITYTTF.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+.container {
+  width: 1250px;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+.backgroundImg {
+  background-size: cover;
+  min-height: "100vh";
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 200px;
+  padding: 20px 50px;
+}
+.cover {
+  margin: auto;
+}
+.coverImg {
+  width: 300px;
+  height: auto;
+}
+li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 10px;
+}
+.movieInfo h1 {
+  font-family: "SOGANGUNIVERSITYTTF";
+  font-size: 3rem;
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+.movieInfo h3 {
+  font-weight: lighter;
+  margin-top: 10px;
+}
+.movieInfo p {
+  margin-top: 30px;
+}
+.movieInfo h3 span {
+  font-size: smaller;
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Movie from "../components/Movie";
 import styles from "../Home.module.css";
+import "../index.css";
 import { RotateLoader } from "react-spinners";
 
 function Home() {
@@ -25,31 +26,28 @@ function Home() {
   useEffect(() => {
     getMovies();
   }, []);
-  console.log(movies);
   return (
-    <div>
+    <div className={styles.container}>
       {loading ? (
         <RotateLoader color="#d8d8d8" cssOverride={override} />
       ) : (
-        <section>
-          <div className={styles.container}>
-            <div className={styles.wrapper}>
-              {movies.map((movie) => (
-                <div className={styles.movie} key={movie.id}>
-                  <Movie
-                    id={movie.id}
-                    coverImg={movie.medium_cover_image}
-                    title={movie.title}
-                    genres={movie.genres}
-                    year={movie.year}
-                    rating={movie.rating}
-                    backgroundImg={movie.background_image}
-                  />
-                </div>
-              ))}
-            </div>
+        <div>
+          <div className={styles.wrapper}>
+            {movies.map((movie) => (
+              <div className={styles.movie} key={movie.id}>
+                <Movie
+                  id={movie.id}
+                  coverImg={movie.medium_cover_image}
+                  title={movie.title}
+                  genres={movie.genres}
+                  year={movie.year}
+                  rating={movie.rating}
+                  backgroundImg={movie.background_image}
+                />
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
       )}
     </div>
   );

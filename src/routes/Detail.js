@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { RotateLoader } from "react-spinners";
+import styles from "../Detail.module.css";
+import "../index.css";
+import { BsArrowLeft } from "react-icons/bs";
 function Detail() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
@@ -16,9 +19,7 @@ function Detail() {
     const json = await (
       await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
     ).json();
-    console.log(json);
     setCurrMovie(json.data.movie);
-
     setLoading(false);
   };
 
@@ -27,34 +28,46 @@ function Detail() {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       {loading ? (
         <RotateLoader color="#d8d8d8" cssOverride={override} />
       ) : (
-        <div
-          style={{
-            backgroundImage: `url(${currMovie.background_image})`,
-            backgroundSize: "cover",
-            minHeight: "100vh",
-          }}
-        >
-          <img src={currMovie.medium_cover_image} alt={currMovie.title}></img>
-          <h3> Title : {currMovie.title}</h3>
-          <h3>
-            {" "}
-            Genres :{" "}
-            {currMovie.genres.map((g) => (
-              <li key={g}>{g}</li>
-            ))}
-          </h3>
-          <h3> Year : {currMovie.year}</h3>
-          <h3> Languages : {currMovie.language}</h3>
-          <p>{currMovie.description_full}</p>
-          <h3>
-            <Link to="/" style={{ textDecoration: "none", color: "aqua" }}>
-              Go back
+        <div>
+          <div
+            className={styles.backgroundImg}
+            style={{
+              backgroundImage: `url(${currMovie.background_image})`,
+            }}
+          >
+            <div className={styles.wrapper}>
+              <div className={styles.movieInfo}>
+                <h1>{currMovie.title}</h1>
+                <h3>
+                  {currMovie.year} |
+                  {currMovie.genres.map((g) => (
+                    <li key={g}>{g}</li>
+                  ))}
+                  &nbsp;&nbsp;{" "}
+                  <span style={{ color: "#ffc107" }}>&#9733; </span>
+                  &nbsp;{currMovie.rating}
+                </h3>
+                <p>{currMovie.description_full}</p>
+              </div>
+              <div className={styles.cover}>
+                <img
+                  className={styles.coverImg}
+                  src={currMovie.large_cover_image}
+                  alt={currMovie.title}
+                ></img>
+              </div>
+            </div>
+          </div>
+          <h1>
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+              &nbsp;&nbsp;
+              <BsArrowLeft />
             </Link>
-          </h3>
+          </h1>
         </div>
       )}
     </div>
