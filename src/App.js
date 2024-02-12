@@ -5,15 +5,13 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <>
+    <Router>
       <Header />
-      <Router basename={process.env.PUBLIC_URL}>
-        <Routes>
-          <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
-          <Route path="/movie/:id" element={<Detail />} />
-        </Routes>
-      </Router>
-    </>
+      <Routes>
+        <Route Route path={process.env.PUBLIC_URL + "/"} element={<Home />} />
+        <Route path="/movie/:id" element={<Detail />} />
+      </Routes>
+    </Router>
   );
 }
 
