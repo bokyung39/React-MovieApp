@@ -63,10 +63,7 @@ function Detail() {
             </div>
           </div>
           <h1>
-            <Link
-              to={process.env.PUBLIC_URL + "/"}
-              style={{ textDecoration: "none", color: "white" }}
-            >
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
               &nbsp;&nbsp;
               <BsArrowLeft />
             </Link>
